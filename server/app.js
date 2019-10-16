@@ -5,7 +5,8 @@ const swaggerDoc = require('./swaggerDoc');
 const mongoose = require("mongoose");
 
 mongoose.connect(
-    `mongodb://${process.env.MONGO_USR || "app_user"}:${process.env.MONGO_PW || "Qwerty123"}@cluster0-shard-00-00-mrgqo.mongodb.net:27017,cluster0-shard-00-01-mrgqo.mongodb.net:27017,cluster0-shard-00-02-mrgqo.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority`,
+    //`mongodb://${process.env.MONGO_USR || "app_user"}:${process.env.MONGO_PW || "Qwerty123"}@cluster0-shard-00-00-mrgqo.mongodb.net:27017,cluster0-shard-00-01-mrgqo.mongodb.net:27017,cluster0-shard-00-02-mrgqo.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority`,
+    "mongodb://app_user:Qwerty123@cluster0-shard-00-00-mrgqo.mongodb.net:27017,cluster0-shard-00-01-mrgqo.mongodb.net:27017,cluster0-shard-00-02-mrgqo.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority",
     { useNewUrlParser: true }
 );
 
@@ -37,6 +38,7 @@ const clients = require("./api/routes/clients");
 app.use("/api/providers", providers);
 app.use("/api/clients", clients);
 
+/*
 app.use((req, res, next) => {
   const error = new Error("Method not found");
   error.status = 404;
@@ -51,6 +53,7 @@ app.use((error, req, res, next) => {
     }
   });
 });
+*/
 
 // Handle production 
 if (process.env.NODE_ENV === 'production') {
@@ -62,6 +65,6 @@ if (process.env.NODE_ENV === 'production') {
   app.get(/.*/, (req, res) => res.sendFile(publicFolder + 'index.html'));
 }
 
-const port = process.env.APP_PORT || 5000;
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`App started on port ${port}`));
