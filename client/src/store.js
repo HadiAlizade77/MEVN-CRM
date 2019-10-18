@@ -1,5 +1,3 @@
-// TODO: Make error messages more readebl
-
 import Vue from 'vue';
 import Vuex from 'vuex';
 
@@ -72,7 +70,6 @@ export const store = new Vuex.Store({
                 state.providersLoading = false;
             } catch(err) {
                 state.error = err.message || "Wooops! Something gone wrong while gettings providers. Keep calm and try again later...";
-                //state.error = err.message;
                 state.providersLoading = false;
             }
         },
@@ -93,7 +90,6 @@ export const store = new Vuex.Store({
                 state.providers.push(provider);
             } catch(err) {
                 state.error = err.message || "Wooops! Something gone wrong while creating provider. Keep calm and try again later...";
-                //state.error = err.message;
             }
         },
         async deleteProvider(state, index) {
@@ -103,7 +99,6 @@ export const store = new Vuex.Store({
                 state.providers.splice(index, 1);
             } catch(err) {
                 state.error = err.message || "Wooops! Something gone wrong while deleting provider. Keep calm and try again later...";
-                //state.error = err.message;
             }
         },
         editProvider(state, index) {
@@ -117,7 +112,6 @@ export const store = new Vuex.Store({
                 state.providers[index].readonly = true;                
             } catch(err) {
                 state.error = err.message || "Wooops! Something gone wrong while saving provider. Keep calm and try again later...";
-                //state.error = err.message;
             }
         },
         async undoSaveProvider(state, index) {
@@ -137,7 +131,6 @@ export const store = new Vuex.Store({
                 state.clientsLoading = false;
             } catch(err) {
                 state.error = err.message || "Wooops! Something gone wrong while gettings clients. Keep calm and try again later...";
-                //state.error = err.message;
                 state.clientsLoading = false;
             }
         },        
@@ -162,7 +155,6 @@ export const store = new Vuex.Store({
                 state.showClientCard = false;
             } catch(err) {
                 state.error = err.message || "Wooops! Something gone wrong while creating client. Keep calm and try again later...";
-                //state.error = err.message;
                 state.showClientCard = true;
             }
         },
@@ -175,7 +167,6 @@ export const store = new Vuex.Store({
                 state.showClientCard = false;                
             } catch(err) {
                 state.error = err.message || "Wooops! Something gone wrong while deleting client. Keep calm and try again later...";
-                //state.error = err.message;
             }
         },        
         editClient(state, index) {
@@ -224,7 +215,6 @@ export const store = new Vuex.Store({
                 state.showClientCard = true;     
             } catch(err) {
                 state.error = err.message || "Wooops! Something gone wrong while creating client. Keep calm and try again later...";
-                //state.error = err.message;
             }
        
         },             
@@ -245,7 +235,6 @@ export const store = new Vuex.Store({
                 state.showClientCard = false;
             } catch(err) {
                 state.error = err.message || "Wooops! Something gone wrong while saving client. Keep calm and try again later...";
-                //state.error = err.message;
                 state.showClientCard = true; 
             }
         },
